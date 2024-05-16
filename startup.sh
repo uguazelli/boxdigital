@@ -6,7 +6,37 @@
 #cd opus
 
 # NGINX
+sudo apt update -y#!/usr/bin/env bash
+
+# DOCKER 
+curl -fsSL get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# DOCKER COMPOSE
+sudo apt-get install docker-compose-plugin -y
+
+#GIT
+sudo apt-get install git -y
+git clone https://github.com/uguazelli/opus.git
+cd opus
+
+docker compose run --rm webserver createsuperuser
+
+# NGINX
 sudo apt update -y
+sudo apt install ufw -y
+sudo apt install nginx -y
+
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw allow 22
+sudo ufw enable
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw status verbose
+sudo systemctl restart nginx
+
 sudo apt install ufw -y
 sudo apt install nginx -y
 
