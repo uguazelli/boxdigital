@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+#GIT
+#sudo apt-get install git -y
+#git clone https://github.com/uguazelli/opus.git
+#cd opus
+
 # NGINX
 sudo apt update -y
 sudo apt install ufw -y
@@ -33,9 +38,9 @@ sudo sh get-docker.sh
 sudo apt-get install docker-compose-plugin -y
 
 #GIT
-sudo apt-get install git -y
-git clone https://github.com/uguazelli/opus.git
-cd opus
+#sudo apt-get install git -y
+#git clone https://github.com/uguazelli/opus.git
+#cd opus
 
 
 docker compose run --rm webserver createsuperuser
