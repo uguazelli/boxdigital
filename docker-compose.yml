@@ -33,12 +33,14 @@
 version: "3.4"
 services:
   broker:
+    container_name: redis
     image: docker.io/library/redis:7
     restart: unless-stopped
     volumes:
       - /mnt/volume_nyc3_01/redisdata:/data
 
   db:
+    container_name: postgres
     image: docker.io/library/postgres:15
     restart: unless-stopped
     volumes:
@@ -49,6 +51,7 @@ services:
       POSTGRES_PASSWORD: paperless
 
   webserver:
+    container_name: paperless
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
     restart: unless-stopped
     depends_on:
@@ -59,14 +62,14 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      # - /mnt/volume_nyc3_01/data:/usr/src/paperless/data
-      # - /mnt/volume_nyc3_01/media:/usr/src/paperless/media
-      # - /mnt/volume_nyc3_01/export:/usr/src/paperless/export
-      # - /mnt/volume_nyc3_01/consume:/usr/src/paperless/consume
-      - data:/usr/src/paperless/data
-      - media:/usr/src/paperless/media
-      - ./export:/usr/src/paperless/export
-      - ./consume:/usr/src/paperless/consume
+      - /mnt/volume_nyc3_03/data:/usr/src/paperless/data
+      - /mnt/volume_nyc3_03/media:/usr/src/paperless/media
+      - /mnt/volume_nyc3_03/export:/usr/src/paperless/export
+      - /mnt/volume_nyc3_03/consume:/usr/src/paperless/consume
+      # - data:/usr/src/paperless/data
+      # - media:/usr/src/paperless/media
+      # - ./export:/usr/src/paperless/export
+      # - ./consume:/usr/src/paperless/consume
     env_file: docker-compose.env
     environment:
       PAPERLESS_REDIS: redis://broker:6379
@@ -76,6 +79,7 @@ services:
       PAPERLESS_TIKA_ENDPOINT: http://tika:9998
 
   gotenberg:
+    container_name: gotenberg
     image: docker.io/gotenberg/gotenberg:7.10
     restart: unless-stopped
 
@@ -87,6 +91,7 @@ services:
       - "--chromium-allow-list=file:///tmp/.*"
 
   tika:
+    container_name: tika
     image: ghcr.io/paperless-ngx/tika:latest
     restart: unless-stopped
 

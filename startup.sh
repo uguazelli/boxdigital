@@ -32,6 +32,9 @@ sudo apt-get install git -y
 git clone https://github.com/uguazelli/opus.git
 cd opus
 
+# Wordpress
+docker compose -f wp-docker-compose.yml up -d
+
 # DOCKER 
 curl -fsSL get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
@@ -39,3 +42,6 @@ sudo sh get-docker.sh
 # DOCKER COMPOSE
 sudo apt-get install docker-compose-plugin -y
 docker compose run --rm webserver createsuperuser
+
+
+echo "instalation finished, please run 'docker compose up -d' to start"
