@@ -1,42 +1,7 @@
 #!/usr/bin/env bash
 
-#GIT
-#sudo apt-get install git -y
-#git clone https://github.com/uguazelli/opus.git
-#cd opus
-
-# NGINX
-sudo apt update -y#!/usr/bin/env bash
-
-# DOCKER 
-curl -fsSL get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-
-# DOCKER COMPOSE
-sudo apt-get install docker-compose-plugin -y
-
-#GIT
-sudo apt-get install git -y
-git clone https://github.com/uguazelli/opus.git
-cd opus
-
-docker compose run --rm webserver createsuperuser
-
 # NGINX
 sudo apt update -y
-sudo apt install ufw -y
-sudo apt install nginx -y
-
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw allow ssh
-sudo ufw allow 22
-sudo ufw enable
-sudo ufw allow http
-sudo ufw allow https
-sudo ufw status verbose
-sudo systemctl restart nginx
-
 sudo apt install ufw -y
 sudo apt install nginx -y
 
@@ -59,6 +24,13 @@ sudo systemctl restart nginx
 #You will get back a few lines. You can try each in your web browser to see if they work.
 #Restart Nginx: After making  changes, restart Nginx for the changes to take effect.
 
+# GIT
+sudo apt update -y
+sudo apt-get install git -y
+
+# Paperless
+git clone https://github.com/uguazelli/opus.git
+cd opus
 
 # DOCKER 
 curl -fsSL get.docker.com -o get-docker.sh
@@ -66,11 +38,4 @@ sudo sh get-docker.sh
 
 # DOCKER COMPOSE
 sudo apt-get install docker-compose-plugin -y
-
-#GIT
-#sudo apt-get install git -y
-#git clone https://github.com/uguazelli/opus.git
-#cd opus
-
-
 docker compose run --rm webserver createsuperuser
