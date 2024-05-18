@@ -5,7 +5,7 @@ services:
     container_name: wp_mysql
     image: mysql:5.7
     volumes:
-      - /mnt/volume_nyc3_04/db_data:/var/lib/mysql
+      - /mnt/volume_nyc3_04/wp_db_data:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
@@ -27,4 +27,4 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
 volumes:
-  db_data:
+  wp_db_data:
