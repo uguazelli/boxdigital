@@ -1,31 +1,32 @@
-version: '3.1'
+version: '3'
 
 services:
+  db:
+    image: mariadb:10.6.4-focal
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=wordpress
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+    expose:
+      - 3306
 
   wordpress:
-    image: wordpress
-    restart: always
+    image: wordpress:latest
     ports:
-      - 8080:80
-    environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: wp_user
-      WORDPRESS_DB_PASSWORD: wp_pass
-      WORDPRESS_DB_NAME: wp
-    volumes:
-      - wordpress:/var/www/html
-
-  mysql:
-    image: mysql:8.0
+      - 8000:80
     restart: always
+    depends_on:
+      - db
     environment:
-      MYSQL_DATABASE: wp
-      MYSQL_USER: wp_user
-      MYSQL_PASSWORD: wp_pass
-      MYSQL_RANDOM_ROOT_PASSWORD: '1'
-    volumes:
-      - mysql:/var/lib/mysql
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
 
 volumes:
-  wordpress:
-  mysql:
+  db_data:
