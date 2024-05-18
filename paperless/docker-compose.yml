@@ -36,12 +36,12 @@ services:
       - gotenberg
       - tika
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
-      - /mnt/volume_nyc3_03/data:/usr/src/paperless/data
-      - /mnt/volume_nyc3_03/media:/usr/src/paperless/media
-      - /mnt/volume_nyc3_03/export:/usr/src/paperless/export
-      - /mnt/volume_nyc3_03/consume:/usr/src/paperless/consume
+      - /mnt/volume_nyc3_04/data:/usr/src/paperless/data
+      - /mnt/volume_nyc3_04/media:/usr/src/paperless/media
+      - /mnt/volume_nyc3_04/export:/usr/src/paperless/export
+      - /mnt/volume_nyc3_04/consume:/usr/src/paperless/consume
       # - data:/usr/src/paperless/data
       # - media:/usr/src/paperless/media
       # - ./export:/usr/src/paperless/export
