@@ -13,14 +13,14 @@ services:
     image: docker.io/library/redis:7
     restart: unless-stopped
     volumes:
-      - /mnt/volume_nyc3_01/redisdata:/data
+      - /mnt/volume_nyc3_04/redisdata:/data
 
   db:
     container_name: postgres
     image: docker.io/library/postgres:15
     restart: unless-stopped
     volumes:
-      - /mnt/volume_nyc3_01/pgdata:/var/lib/postgresql/data
+      - /mnt/volume_nyc3_04/pgdata:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless

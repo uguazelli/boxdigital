@@ -4,7 +4,7 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      - /mnt/volume_nyc3_01/db_data:/var/lib/mysql
+      - /mnt/volume_nyc3_04/db_data:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
