@@ -14,6 +14,9 @@ sudo systemctl enable caddy
 # Verify Installation:
 sudo systemctl status caddy
 
+# Caddy reload
+systemctl reload caddy
+
 
 # Caddy file example  filename: Caddyfile
 
@@ -21,12 +24,7 @@ sudo systemctl status caddy
 #         reverse_proxy localhost:8002
 # }
 
-# # Redirect www.paperless.opus-web.com to paperless.opus-web.com
-# www.paperless.opus-web.com {
-#         redir https://paperless.opus-web.com{uri} 301
-# }
-
-# paperless.opus-web.com {
+# paperless.opus-web.com, www.paperless.opus-web.com {
 #         reverse_proxy localhost:8001
 # }
 
