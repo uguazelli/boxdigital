@@ -18,6 +18,30 @@ sudo systemctl status caddy
 systemctl reload caddy
 
 
+# Define the location of the Caddyfile
+caddyfile_path="/root"
+
+# Create the Caddyfile content
+cat << EOF >> "$caddyfile_path"
+opus-web.com, www.opus-web.com {
+        reverse_proxy localhost:8002
+}
+
+paperless.opus-web.com, www.paperless.opus-web.com {
+        reverse_proxy localhost:8001
+}
+EOF
+
+# Set ownership and permissions for the Caddyfile
+chown root:caddy "$caddyfile_path"
+chmod 777 "$caddyfile_path"  # Readable by owner and group, writable only by owner
+
+echo "Caddyfile created successfully at $caddyfile_path"
+
+
+# Caddy reload
+systemctl reload caddy
+
 # Caddy file example  filename: Caddyfile
 
 # opus-web.com, www.opus-web.com {
@@ -40,9 +64,9 @@ sudo sh get-docker.sh
 sudo apt-get install docker-compose-plugin -y
 
 
-# GIT
-sudo apt update -y
-sudo apt-get install git -y
+# # GIT
+# sudo apt update -y
+# sudo apt-get install git -y
 
 # Opus
 git clone https://github.com/uguazelli/opus.git
@@ -54,6 +78,7 @@ docker compose up -d
 
 # Paperless
 cd /opus/paperless
-docker compose run --rm webserver createsuperuser
+# docker compose run --rm webserver createsuperuser
+docker compose up -d
 
-echo "instalation finished, please run 'docker compose up -d' to start"
+# echo "instalation finished, please run 'docker compose up -d' to start"
