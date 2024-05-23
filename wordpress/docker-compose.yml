@@ -24,7 +24,7 @@ services:
       MYSQL_PASSWORD: wordpress
       MYSQL_RANDOM_ROOT_PASSWORD: wordpress
     volumes:
-      - /mnt/volume_nyc3_04/shared_wp_db_data:/var/lib/mysql
+      - /mnt/volume_nyc3_04/wp_shared_db_data:/var/lib/mysql
 
 volumes:
   wordpress:
