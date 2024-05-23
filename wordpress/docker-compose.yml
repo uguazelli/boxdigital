@@ -1,15 +1,31 @@
-version: "3.1"
+version: '3.1'
 
 services:
+
   wordpress:
     image: wordpress
     restart: always
     ports:
-      - "8002:80" # Adjust ports for each installation
+      - 8080:80
     environment:
-      WORDPRESS_DB_HOST: host.docker.internal:3306 # Adjust for real IP when in another machine
+      WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
     volumes:
       - /mnt/volume_nyc3_04/wp_data:/var/www/html
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_RANDOM_ROOT_PASSWORD: wordpress
+    volumes:
+      - /mnt/volume_nyc3_04/shared_wp_db_data:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:
