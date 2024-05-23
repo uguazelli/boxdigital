@@ -69,11 +69,11 @@ sudo apt-get install docker-compose-plugin -y
 # sudo apt-get install git -y
 
 # Opus
-git clone https://github.com/uguazelli/opus.git
+# git clone https://github.com/uguazelli/opus.git
 
 
 # Wordpress
-cd opus/wp
+cd /opus/wp
 docker compose up -d
 
 # Paperless

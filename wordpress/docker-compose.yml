@@ -1,0 +1,15 @@
+version: "3.1"
+
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - "8002:80" # Adjust ports for each installation
+    environment:
+      WORDPRESS_DB_HOST: host.docker.internal:3306 # Adjust for real IP when in another machine
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - /mnt/volume_nyc3_04/wp_data:/var/www/html

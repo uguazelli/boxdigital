@@ -1,0 +1,15 @@
+version: "3.1"
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_RANDOM_ROOT_PASSWORD: wordpress
+    ports:
+      - "3306:3306"
+    volumes:
+      - /mnt/volume_nyc3_04/shared_wp_db_data:/var/lib/mysql
