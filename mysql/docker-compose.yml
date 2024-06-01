@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+
+  db:
+    container_name: mysql
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # Use MYSQL_ROOT_PASSWORD instead of MYSQL_RANDOM_ROOT_PASSWORD for consistency
+    ports:
+      - 3306:3306
+    volumes:
+      - /mnt/volume_nyc3_05/wp_db_data:/var/lib/mysql
