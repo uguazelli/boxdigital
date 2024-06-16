@@ -1,0 +1,17 @@
+version: "3.4"
+services:
+  db:
+    container_name: postgres
+    image: docker.io/library/postgres:15
+    restart: unless-stopped
+    volumes:
+      - /mnt/volume_01/pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: paperless
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata:
