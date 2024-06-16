@@ -41,6 +41,7 @@ echo "Caddyfile created successfully at $caddyfile_path"
 
 # Caddy reload
 systemctl reload caddy
+caddy reload
 
 # Caddy file example  filename: Caddyfile
 
@@ -73,11 +74,11 @@ sudo apt-get install docker-compose-plugin -y
 
 
 # Wordpress
-cd /opus/wp
+cd /boxdigital/wp
 docker compose up -d
 
 # Paperless
-cd /opus/paperless
+cd /boxdigital/paperless
 # docker compose run --rm webserver createsuperuser
 docker compose up -d
 

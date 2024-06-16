@@ -26,10 +26,10 @@ services:
     ports:
       - "8001:8000"
     volumes:
-      - /mnt/volume_01/data:/usr/src/paperless/data
-      - /mnt/volume_01/media:/usr/src/paperless/media
-      - /mnt/volume_01/export:/usr/src/paperless/export
-      - /mnt/volume_01/consume:/usr/src/paperless/consume
+      - /mnt/volume_01/paperless/data:/usr/src/paperless/data
+      - /mnt/volume_01/paperless/media:/usr/src/paperless/media
+      - /mnt/volume_01/paperless/export:/usr/src/paperless/export
+      - /mnt/volume_01/paperless/consume:/usr/src/paperless/consume
     env_file: docker-compose.env
     environment:
       PAPERLESS_REDIS: redis://broker:6379
